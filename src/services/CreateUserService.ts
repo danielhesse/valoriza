@@ -10,7 +10,7 @@ interface IRequest {
 }
 
 export class CreateUserService {
-  async execute({ name, email, password, admin }: IRequest) {
+  async execute({ name, email, password, admin = false }: IRequest) {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const userAlreadyExists = await usersRepository.findOne({ email });
